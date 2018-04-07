@@ -1,5 +1,6 @@
 <template>
   <div class="flex-col-center">
+    <button @click="getMessages">Get Messages</button>
     <div>Enter a Message</div>
     <input
       class="message-input"
@@ -19,19 +20,44 @@ export default {
   data() {
     return {
       inputMessage: '',
-      messages: [
-        { date: new Date(), message: 'blah' },
-      ],
+      messages: [],
+      apiURI: 'http://localhost:3000/messages',
     }
   },
   methods: {
-    addMessage(e) {
-      this.messages.unshift({
+    addMessage() {
+      // Only if there is content
+      const message = this.inputMessage.trim()
+      if (!message.length) return;
+
+      const payload = {
         date: new Date(),
         message: this.inputMessage,
-      });
-      this.inputMessage = '';
+      };
+
+      this.$http.post(this.apiURI, payload)
+        .then(res => {
+          console.log('addMessage succeeded: ', res);
+          this.messages.unshift(payload);
+          this.inputMessage = '';
+        })
+        .catch(err => {
+          console.error('addMessage failed: ', err);
+        })
     },
+    getMessages() {
+      this.$http.get(this.apiURI)
+        .then(res => {
+          console.log('getMessages succeeded: ', res);
+          this.messages = res.body;
+        })
+        .catch(err => {
+          console.error('getMessages failed: ', err);
+        });
+    },
+  },
+  mounted() {
+
   },
 }
 </script>
