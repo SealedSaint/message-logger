@@ -32,7 +32,7 @@ export default {
 
       const payload = {
         date: new Date(),
-        message: this.inputMessage,
+        message: message,
       };
 
       this.$http.post(this.apiURI, payload)
