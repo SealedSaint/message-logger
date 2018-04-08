@@ -21,7 +21,7 @@ export default {
     return {
       inputMessage: '',
       messages: [],
-      apiURI: 'http://localhost:3000/messages',
+      apiURI: 'http://a495022fd3ae411e8b11c0656f7f56aa-644632294.us-west-2.elb.amazonaws.com/messages',
     }
   },
   methods: {
