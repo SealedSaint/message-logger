@@ -46,6 +46,7 @@ export default {
         })
     },
     getMessages() {
+      console.log('Fetching messages...');
       this.$http.get(this.apiURI)
         .then(res => {
           console.log('getMessages succeeded: ', res);
