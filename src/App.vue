@@ -1,5 +1,6 @@
 <template>
   <div class="flex-col-center">
+    <div>API_URI: {{ apiURI }}</div>
     <button @click="getMessages">Get Messages</button>
     <div>Enter a Message</div>
     <input
@@ -9,7 +10,7 @@
     />
     <div class="message-block" v-for="messageObj in messages">
       <div>{{ messageObj.message }}</div>
-      <div class="message-date">{{ messageObj.date.toString() }}</div>
+      <div class="message-date">{{ new Date(messageObj.date).toString() }}</div>
     </div>
   </div>
 </template>
@@ -21,7 +22,7 @@ export default {
     return {
       inputMessage: '',
       messages: [],
-      apiURI: 'http://a495022fd3ae411e8b11c0656f7f56aa-644632294.us-west-2.elb.amazonaws.com/messages',
+      apiURI: `${this.$config.API_URI}/messages`,
     }
   },
   methods: {
@@ -50,7 +51,7 @@ export default {
       this.$http.get(this.apiURI)
         .then(res => {
           console.log('getMessages succeeded: ', res);
-          this.messages = res.body;
+          this.messages = res.body.reverse();
         })
         .catch(err => {
           console.error('getMessages failed: ', err);
