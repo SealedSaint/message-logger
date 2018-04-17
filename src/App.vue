@@ -1,5 +1,8 @@
 <template>
   <div class="flex-col-center">
+    <div>
+      New Change
+    </div>
     <button @click="getMessages">Get Messages</button>
     <div>Enter a Message</div>
     <input
