@@ -1,6 +1,5 @@
 <template>
   <div class="flex-col-center">
-    <div>API_URI: {{ apiURI }}</div>
     <button @click="getMessages">Get Messages</button>
     <div>Enter a Message</div>
     <input
