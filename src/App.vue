@@ -1,6 +1,6 @@
-<template>dood
+<template>
   <div class="flex-col-center">
-    <button @click="getMessages">Get Messages</button>
+    <button @click="getMessages">Get Messages Dood</button>
     <div>Enter a Message</div>
     <input
       class="message-input"
