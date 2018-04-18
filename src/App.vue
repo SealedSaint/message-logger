@@ -1,6 +1,6 @@
 <template>
   <div class="flex-col-center">
-    <button @click="getMessages">Get Messages Dood</button>
+    <button @click="getMessages">Get Messages</button>
     <div>Enter a Message</div>
     <input
       class="message-input"
