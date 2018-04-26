@@ -6,6 +6,7 @@
       class="message-input"
       v-model="inputMessage"
       @keyup.enter="addMessage"
+      placeholder="Press Enter to Submit"
     />
     <div class="message-block" v-for="messageObj in messages">
       <div>{{ messageObj.message }}</div>
